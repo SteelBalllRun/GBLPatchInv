@@ -1,6 +1,219 @@
 <!DOCTYPE html>
-<html>
+<!-- saved from url=https://steelballlrun.github.io/GBLPatchInv/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>GPC JS API Test</title>
+    <style>
+        *{ margin:0; padding:0;}
+        a,a:hover{ color:#666; text-decoration:none;}
+        ul,ol,li{ list-style:none;}
+        img{ border:0;}
+        html{ font-size:100%; -webkit-text-size-adjust:none;}
+        body{ background:#e8e8e8; font:16px/1.5 Helvetica,Arial; color:#222; word-wrap:break-word;}
+        h1,h2,h3,h4,h5,h6{ font-size:100%; font-weight:normal;}
+        h1{ font-size:20px;}
+        h2{ font-size:18px;}
+        header{ position:fixed; left:0; top:0; width:100%; height:40px; background:rgba(235,26,28,0.85); text-align:center; line-height:40px; color:#fff;}
+        article{ padding:40px 12px;}
+        section{ margin:12px 0; padding:8px 8px; border:1px solid #d2d2d2;  background-color:#fff; overflow:hidden;}
+        h2{ height:40px; border-bottom:1px solid #e4e4e4;  line-height:40px; color:#ff2814;}
+        ol{ margin:8px 0 8px 5px;}
+        ol li a{ display:block; width:100%; height:32px; line-height:32px;}
+        .code{ display:-webkit-box;}
+        .code img{ display:block; width:120px; height:120px; margin-right:8px;}
+        .code p{-webkit-box-flex:1; color:#666; font-size:14px;}
+        .btn {display: block; font-size: 14px; margin-left: 8px; border: 0 none; border-radius: 2px; background-color: #ff7e72; border-color: #ff7e72; color: #fff; outline: none; padding: 5px; margin: 10px;}
+        .btn:active {opacity: 0.5;}
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-</body>
-</html>
+    <header><h1>GPCWebview-JSAPI-DEMO</h1></header>
+    <article id="J_container">
+		
+		<section class="j-section">
+			<h2>基础测试（测试环境）</h2>
+			<button class="btn" onclick="homePage('tgpmobile')">tgpmobile://home_game 首页</button>
+			<button class="btn" onclick="openUrl('tgpmobile', '测试标题参数')">tgpmobile://common_webview/?web_url=xxxx&web_title=xxx  APP打开bao.qq.com（带标题）</button>
+			<button class="btn" onclick="openUrl('tgpmobile', '')">tgpmobile://common_webview/?web_url=xxxx&web_title=xxx  APP打开bao.qq.com（不带标题）</button>
+			<button class="btn" onclick="msgCenter('tgpmobile')">tgpmobile://msgcenter 消息中心</button>
+      		<button class="btn" onclick="userCenter('tgpmobile')">tgpmobile://self_person_center 个人中心</button>
+			<button class="btn" onclick="shareWebPage()">jsbridge://share/shareWebPage?p= 分享</button>
+
+			<button class="btn" onclick="openDevContent('tgpmobile','2337','10002172')">tgpmobile://dev_feed_detail?topic_id=xx&comment_id=xx 开发者动态详情页(定位评论)</button>	
+			<button class="btn" onclick="openDevContent('tgpmobile','2337','')">tgpmobile://dev_feed_detail?topic_id=xx&comment_id=xx 开发者动态详情页(不定位评论)</button>	
+
+			<button class="btn" onclick="openGameContent('tgpmobile','10000')">tgpmobile://gamedetail?gameid=xxx 游戏详情页</button>
+			<button class="btn" onclick="openGameInfoContent('tgpmobile','10000')">tgpmobile://game_info?gameid=xxx 游戏资料详情页</button>
+			<button class="btn" onclick="openForumContent('tgpmobile','50430','10000')">tgpmobile://forum/home?forum_id=xx&game_id=xxx 论坛页（带gameID）</button>      
+			<button class="btn" onclick="openForumContent('tgpmobile','50430')">tgpmobile://forum/home?forum_id=xx&game_id=xxx 论坛页 (不带gameID)</button>      
+
+			<button class="btn" onclick="openChooseGame('tgpmobile','1')">tgpmobile://choose_game?source=xxx 选择游戏页面 (带source = 1)</button>
+
+			<button class="btn" onclick="openVideoFullScreen('tgpmobile','m03651tgflb','20091')">tgpmobile://video_fullscreen?video_url=url&game_id=0 全屏播放游戏视频</button>
+		</section>
+
+		<section class="j-section">
+			<h2>基础测试（正式环境）</h2>
+			<button class="btn" onclick="homePage('tgpmobile')">tgpmobile://home_game 首页</button>
+			<button class="btn" onclick="openUrl('tgpmobile', '测试标题参数')">tgpmobile://common_webview/?web_url=xxxx&web_title=xxx  APP打开bao.qq.com（带标题）</button>
+			<button class="btn" onclick="openUrl('tgpmobile', '')">tgpmobile://common_webview/?web_url=xxxx&web_title=xxx  APP打开bao.qq.com（不带标题）</button>
+			<button class="btn" onclick="msgCenter('tgpmobile')">tgpmobile://msgcenter 消息中心</button>
+      		<button class="btn" onclick="userCenter('tgpmobile')">tgpmobile://self_person_center 个人中心</button>
+			<button class="btn" onclick="shareWebPage()">jsbridge://share/shareWebPage?p= 分享</button>
+
+			<button class="btn" onclick="openDevContent('tgpmobile','1122','10003754')">tgpmobile://dev_feed_detail?topic_id=xx&comment_id=xx 开发者动态详情页(定位评论)</button>	
+			<button class="btn" onclick="openDevContent('tgpmobile','1122','')">tgpmobile://dev_feed_detail?topic_id=xx&comment_id=xx 开发者动态详情页(不定位评论)</button>	
+
+			<button class="btn" onclick="openGameContent('tgpmobile','20091')">tgpmobile://gamedetail?gameid=xxx 游戏详情页</button>
+			<button class="btn" onclick="openGameInfoContent('tgpmobile','20091')">tgpmobile://game_info?gameid=xxx 游戏资料详情页</button>
+			<button class="btn" onclick="openForumContent('tgpmobile','50426','20091')">tgpmobile://forum/home?forum_id=xx&game_id=xxx 论坛页（带gameID）</button>      
+			<button class="btn" onclick="openForumContent('tgpmobile','50426','')">tgpmobile://forum/home?forum_id=xx&game_id=xxx 论坛页 (不带gameID)</button>      
+
+			<button class="btn" onclick="openChooseGame('tgpmobile','1')">tgpmobile://choose_game?source=xxx 选择游戏页面 (带source = 1)</button>
+
+			<button class="btn" onclick="openVideoFullScreen('tgpmobile','s050245p3o3','20091')">tgpmobile://video_fullscreen?video_url=url&game_id=0 全屏播放游戏视频</button>
+		</section>
+		
+	  </article>
+
+    <div id="container" class="container" style="display:none;">
+        <textarea id="textarea" class="span12" style="height: 160px;width: 100%;font-size: 10px;"></textarea>
+        <hr>
+    </div>
+
+
+<script>
+function encodeBase64(input) {
+	//有两种base64, 区别在于在什么时候补0, 标准的应该是 3x8=>4x6 后补0
+	var _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+	var output = [];
+	var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+	var i = 0;
+	while(i < input.length) {
+		chr1 = input.charCodeAt(i++);// & 0xff;
+		//alert('chr1 : ' + chr1.toString(16));
+		chr2 = input.charCodeAt(i++);// & 0xff;
+		//alert('chr2 : ' + chr2.toString(16));
+		chr3 = input.charCodeAt(i++);// & 0xff;
+		//alert('chr3 : ' + chr3.toString(16));
+		enc1 = chr1 >> 2;
+		enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+		enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+		enc4 = chr3 & 63;
+		//console.log([chr1,chr2,chr3]);
+		if(isNaN(chr2)) {
+			enc3 = enc4 = 64;
+		} else if(isNaN(chr3)) {
+			enc4 = 64;
+		}
+		//console.log([enc1,enc2,enc3,enc4]);
+		output.push(_keyStr.charAt(enc1) + _keyStr.charAt(enc2) + _keyStr.charAt(enc3) + _keyStr.charAt(enc4));
+	}
+	return output.join('');
+}
+//呼起主界面
+function homePage(scheme){
+	location.href = scheme +'://home_game';
+}
+
+//消息中心
+function msgCenter(scheme){
+	location.href = scheme +'://msgcenter';
+}
+
+//个人中心
+function userCenter(scheme){
+	location.href = scheme +'://self_person_center';
+}
+
+//打开url
+function openUrl(scheme, title){
+	var url = "http://bao.qq.com";
+	var href = scheme + '://common_webview/?web_url=' + encodeBase64(url);
+	if (title.length > 0) {
+		href = href + '&web_title=' + title
+	}
+	location.href = href;
+}
+
+//开发者动态详情页
+function openDevContent(scheme, topicId, commentId){
+	var href = scheme + '://dev_feed_detail?topic_id=' + topicId
+	if (commentId.length > 0) {
+		location.href = href +'&comment_id=' + commentId;
+	}
+	location.href = href;
+}
+//游戏详情页
+function openGameContent(scheme, gameId){
+	var href = scheme + '://gamedetail?gameid=' + gameId;
+	location.href = href;
+}
+
+//游戏资料详情页
+function openGameInfoContent(scheme, gameId){
+	var href = scheme + '://game_info?gameid=' + gameId;
+	location.href = href;
+}
+
+//论坛详情页
+function openForumContent(scheme, forumId, gameId){
+	var href = scheme + '://forum/home?forum_id=' + forumId;
+	if (gameId.length > 0) {
+		href = href + '&game_id=' + gameId
+	};
+	location.href = href;
+}
+
+//选择游戏页
+function openChooseGame(scheme, source){
+	var href = scheme + '://choose_game?source=' + source;
+	location.href = href;
+}
+
+//全屏视频
+function openVideoFullScreen(scheme, url, gameId){
+	var href = scheme + '://video_fullscreen?video_url=' + forumId;
+	if (gameId.length > 0) {
+		href = href + '&game_id=' + gameId
+	};
+	location.href = href;
+}
+
+//登录
+function logincallbak(result){
+	alert(result);
+	if(result){
+		alert("登录成功");
+	}else{
+		alert("登录失败");
+	}
+}
+function login(){
+	var para = {callback:'logincallbak'};
+	para = JSON.stringify(para);
+	para = encodeURIComponent(para);
+	var url = 'jsbridge://common/login?p='+para;
+	var iframe = document.createElement('iframe');
+	iframe.style.cssText = 'display:none;width:0px;height:0px;';	
+	document.body.appendChild(iframe);
+	iframe.src = url;	
+}
+//分享
+function shareWebPage(){
+	var picUrl = 'http://ossweb-img.qq.com/images/syb/bbs/pc/yl/header_title.png';
+	var title= '测试分享';
+	var describe = '分享内容简要';
+	var contentUrl = 'http://bao.qq.com';	
+	var para = {picUrl:picUrl,title:title,describe:describe,contentUrl:contentUrl};
+	para = JSON.stringify(para);
+	para = encodeURIComponent(para);
+	var url = 'jsbridge://share/shareWebPage?p='+para;
+	var iframe = document.createElement('iframe');
+	iframe.style.cssText = 'display:none;width:0px;height:0px;';	
+	document.body.appendChild(iframe);
+	iframe.src = url;
+}
+</script>
+
+</body></html>
