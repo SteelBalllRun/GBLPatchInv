@@ -50,6 +50,7 @@
 			<button class="btn" onclick="openChooseGame('tgpmobile','1')">tgpmobile://choose_game?source=xxx 选择游戏页面 (带source = 1)</button>
 
 			<button class="btn" onclick="openVideoFullScreen('tgpmobile','m03651tgflb','20091')">tgpmobile://video_fullscreen?video_url=url&game_id=0 全屏播放游戏视频</button>
+			<button class="btn" onclick="videoTopicPage('tgpmobile','12216')">tgpmobile://video_topic?topic_id=12216 视频话题详情页</button>
 		</section>
 
 		<section class="j-section">
@@ -213,6 +214,12 @@ function shareWebPage(){
 	iframe.style.cssText = 'display:none;width:0px;height:0px;';	
 	document.body.appendChild(iframe);
 	iframe.src = url;
+}
+
+	//视频话题详情页跳转
+function videoTopicPage(scheme, videoId){
+	var href = scheme + '://video_topic?topic_id=' + videoId;
+	location.href = href;
 }
 </script>
 
