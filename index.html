@@ -51,6 +51,8 @@
 
 			<button class="btn" onclick="openVideoFullScreen('tgpmobile','m03651tgflb','20091')">tgpmobile://video_fullscreen?video_url=url&game_id=0 全屏播放游戏视频</button>
 			<button class="btn" onclick="videoTopicPage('tgpmobile','2')">tgpmobile://video_topic?topic_id=2 视频话题详情页</button>
+			
+			<button class="btn" onclick="closeCurrentWebPage()">jsbridge://common/closeWebView 关闭当前网页</button>
 		</section>
 
 		<section class="j-section">
@@ -73,6 +75,8 @@
 			<button class="btn" onclick="openChooseGame('tgpmobile','1')">tgpmobile://choose_game?source=xxx 选择游戏页面 (带source = 1)</button>
 
 			<button class="btn" onclick="openVideoFullScreen('tgpmobile','s050245p3o3','20091')">tgpmobile://video_fullscreen?video_url=url&game_id=0 全屏播放游戏视频</button>
+			
+			<button class="btn" onclick="closeCurrentWebPage()">jsbridge://common/closeWebView 关闭当前网页</button>
 		</section>
 		
 	  </article>
@@ -214,6 +218,12 @@ function shareWebPage(){
 	iframe.style.cssText = 'display:none;width:0px;height:0px;';	
 	document.body.appendChild(iframe);
 	iframe.src = url;
+}
+
+//关闭当前网页
+function closeCurrentWebPage(){
+	var url = 'jsbridge://common/closeWebView';
+	location.href = url;
 }
 
 	//视频话题详情页跳转
