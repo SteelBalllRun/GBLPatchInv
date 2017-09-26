@@ -231,6 +231,33 @@ function videoTopicPage(scheme, videoId){
 	var href = scheme + '://video_topic?topic_id=' + videoId;
 	location.href = href;
 }
+	//tgpmobile://show/photo_show_home?show_id=xx
+function photoShowPage(scheme, show_id){
+	var href = scheme + '://show/photo_show_home?show_id=' + videoId;
+	location.href = href;
+}	
+	//tgpmobile://show/photo_show_details?show_id=xx&feed_id=xx
+function photoShowDetailPage(scheme, show_id, feed_id){
+	var href = scheme + '://show/photo_show_details?show_id=' + show_id + '&feed_id=' + feed_id;
+	location.href = href;
+}
+	//tgpmobile:/quora/question_list
+	function questionListPage(){
+	var url = 'tgpmobile:/quora/question_list';
+	location.href = url;
+}
+	//tgpmobile:/quora/publish_question
+	//tgpmobile:/quora/edit_question?question_id=xxx
+	//tgpmobile://quora/question_detail?question_id=0&algorithm_id=0
+	//tgpmobile://quora/answer_detail?question_id=0&answer_id=0&comment_id=0&algorithm_id=0
+	//tgpmobile://quora/answer_edit?question_id=0&answer_id=0
+	//tgpmobile://quora/answer_publish?question_id=0&game_id=0&game_name=“”
+	//tgpmobile://article/article_detail?article_id=0&comment_id=0&reply_id=0
+	//tgpmobile://article/publish_article
+	//tgpmobile://article/edit_article?article_id=0
+	
+	
+
 </script>
 
 </body></html>
