@@ -51,8 +51,17 @@
 
 			<button class="btn" onclick="openVideoFullScreen('tgpmobile','m03651tgflb','20091')">tgpmobile://video_fullscreen?video_url=url&game_id=0 全屏播放游戏视频</button>
 			<button class="btn" onclick="videoTopicPage('tgpmobile','2')">tgpmobile://video_topic?topic_id=2 视频话题详情页</button>
-			
+
+			<button class="btn" onclick="photoShowPage('tgpmobile','6101')">tgpmobile://show/photo_show_home?show_id=xx 晒图主题页</button>
+			<button class="btn" onclick="photoShowDetailPage('tgpmobile','6101','6102')">tgpmobile://show/photo_show_details?show_id=xx&feed_id=xx 晒图详情页</button>
+
+			<button class="btn" onclick="questionListPage()">tgpmobile:/quora/question_list 问题列表页</button>
+			<button class="btn" onclick="questionDetail('6012','0')">tgpmobile://quora/question_detail?question_id=0&algorithm_id=0 问题详情页</button>
+			<button class="btn" onclick="answerDetal('6012','6046','0','0')">tgpmobile://quora/answer_detail?question_id=0&answer_id=0&comment_id=0&algorithm_id=0 回答详情页</button>
+			<button class="btn" onclick="arcticalDetal('6018')">tgpmobile://article/article_detail?article_id=0&comment_id=0&reply_id=0 文章详情页</button>
+
 			<button class="btn" onclick="closeCurrentWebPage()">jsbridge://common/closeWebView 关闭当前网页</button>
+
 		</section>
 
 		<section class="j-section">
@@ -77,6 +86,14 @@
 			<button class="btn" onclick="openVideoFullScreen('tgpmobile','s050245p3o3','20091')">tgpmobile://video_fullscreen?video_url=url&game_id=0 全屏播放游戏视频</button>
 			
 			<button class="btn" onclick="closeCurrentWebPage()">jsbridge://common/closeWebView 关闭当前网页</button>
+
+			<button class="btn" onclick="photoShowPage('tgpmobile','7372')">tgpmobile://show/photo_show_home?show_id=xx 晒图主题页</button>
+			<button class="btn" onclick="photoShowDetailPage('tgpmobile','7372','7327')">tgpmobile://show/photo_show_details?show_id=xx&feed_id=xx 晒图详情页</button>
+
+			<button class="btn" onclick="questionListPage()">tgpmobile:/quora/question_list 问题列表页</button>
+			<button class="btn" onclick="questionDetail('7795','0')">tgpmobile://quora/question_detail?question_id=0&algorithm_id=0 问题详情页</button>
+			<button class="btn" onclick="answerDetal('7795','7955','0','0')">tgpmobile://quora/answer_detail?question_id=0&answer_id=0&comment_id=0&algorithm_id=0 回答详情页</button>
+			<button class="btn" onclick="arcticalDetal('7462')">tgpmobile://article/article_detail?article_id=0&comment_id=0&reply_id=0 文章详情页</button>
 		</section>
 		
 	  </article>
@@ -220,41 +237,48 @@ function shareWebPage(){
 	iframe.src = url;
 }
 
-//关闭当前网页
-function closeCurrentWebPage(){
-	var url = 'jsbridge://common/closeWebView';
-	location.href = url;
-}
+	//关闭当前网页
+	function closeCurrentWebPage(){
+		var url = 'jsbridge://common/closeWebView';
+		location.href = url;
+	}
 
 	//视频话题详情页跳转
-function videoTopicPage(scheme, videoId){
-	var href = scheme + '://video_topic?topic_id=' + videoId;
-	location.href = href;
-}
+	function videoTopicPage(scheme, videoId){
+		var href = scheme + '://video_topic?topic_id=' + videoId;
+		location.href = href;
+	}
 	//tgpmobile://show/photo_show_home?show_id=xx
-function photoShowPage(scheme, show_id){
-	var href = scheme + '://show/photo_show_home?show_id=' + videoId;
-	location.href = href;
-}	
+	function photoShowPage(scheme, show_id){
+		var href = scheme + '://show/photo_show_home?show_id=' + videoId;
+		location.href = href;
+	}	
 	//tgpmobile://show/photo_show_details?show_id=xx&feed_id=xx
-function photoShowDetailPage(scheme, show_id, feed_id){
-	var href = scheme + '://show/photo_show_details?show_id=' + show_id + '&feed_id=' + feed_id;
-	location.href = href;
-}
+	function photoShowDetailPage(scheme, show_id, feed_id){
+		var href = scheme + '://show/photo_show_details?show_id=' + show_id + '&feed_id=' + feed_id;
+		location.href = href;
+	}
 	//tgpmobile:/quora/question_list
 	function questionListPage(){
 	var url = 'tgpmobile:/quora/question_list';
 	location.href = url;
-}
-	//tgpmobile:/quora/publish_question
-	//tgpmobile:/quora/edit_question?question_id=xxx
+	}
 	//tgpmobile://quora/question_detail?question_id=0&algorithm_id=0
+	function questionDetail(question_id,algorithm_id){
+		var url = 'tgpmobile://quora/question_detail?question_id='+ question_id + '&algorithm_id=' + algorithm_id;
+		location.href = url;
+	}
+
 	//tgpmobile://quora/answer_detail?question_id=0&answer_id=0&comment_id=0&algorithm_id=0
-	//tgpmobile://quora/answer_edit?question_id=0&answer_id=0
-	//tgpmobile://quora/answer_publish?question_id=0&game_id=0&game_name=“”
+	function answerDetal(question_id,answer_id,comment_id,algorithm_id) {
+		var url = 'tgpmobile://quora/answer_detail?question_id='+ question_id + '&answer_id=' + answer_id + '&comment_id= ' + comment_id + '&algorithm_id=' + algorithm_id;
+		location.href = url;
+	}
 	//tgpmobile://article/article_detail?article_id=0&comment_id=0&reply_id=0
-	//tgpmobile://article/publish_article
-	//tgpmobile://article/edit_article?article_id=0
+	function arcticalDetal(arcticle_id, comment_id, reply_id){
+		var url = 'tgpmobile://article/article_detail?article_id=' + article_id + '&comment_id=' + comment_id + '&reply_id=' + reply_id;
+		location.href = url;
+	}
 	
 	
 
